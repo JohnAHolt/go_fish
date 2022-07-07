@@ -3,12 +3,10 @@ defmodule GoFish.Server do
 
   # Client API
 
-  @impl true
   def start_link(player_count) when is_integer(player_count) do
     GenServer.start_link(__MODULE__,player_count)
   end
 
-  @impl true
   def take_card(pid) do
     GenServer.call(pid, :take_card)
   end
@@ -16,7 +14,7 @@ defmodule GoFish.Server do
   # Server Side
 
   @impl true
-  def init(player_count) do
+  def init(_player_count) do
     {:ok, %GoFish.Game{}}
   end
 

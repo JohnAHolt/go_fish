@@ -7,4 +7,10 @@ defmodule GoFish.Game do
             deck: GoFish.Deck.new(),
             status: :not_started
 
+  def init() do
+    {:ok, pid_server} = GoFish.Server.start_link(1)
+    {:ok, pid_player} = GoFish.Player.start_link(pid_server)
+
+  end
+
 end
